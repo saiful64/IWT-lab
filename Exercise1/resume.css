@@ -1,0 +1,31 @@
+body {
+	font-family: sans-serif;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+}
+h2 {
+	color: grey;
+}
+img {
+	border-radius: 50%;
+	box-shadow: 0 0 50px #ccc;
+	position: fixed;
+    right: 20px;
+}
+
+section {
+	padding: 20px;
+	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.left {
+	margin-left: 20px;
+}
+
+.left > a {
+	padding-right: 10px;
+	margin: 10px;
+}
