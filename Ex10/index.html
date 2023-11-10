@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Book List</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      #loadBooks {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+
+      #loadBooks:hover {
+        background-color: #0056b3;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+      }
+
+      li {
+        background-color: #fff;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Book List</h1>
+    <button id="loadBooks">Load Books</button>
+    <ul id="bookList"></ul>
+
+    <script>
+      document
+        .getElementById("loadBooks")
+        .addEventListener("click", function () {
+          fetch("api.php")
+            .then((response) => response.json())
+            .then((data) => {
+              const bookList = document.getElementById("bookList");
+              bookList.innerHTML = ""; // Clear any existing book list
+
+              data.forEach((book) => {
+                const listItem = document.createElement("li");
+                listItem.textContent = `Title: ${book.title}, Author: ${book.author}, Genre: ${book.genre}, Year: ${book.year}`;
+                bookList.appendChild(listItem);
+              });
+            })
+            .catch((error) => {
+              console.error("Error loading books: " + error);
+            });
+        });
+    </script>
+  </body>
+</html>
